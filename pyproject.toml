@@ -1,0 +1,13 @@
+[project]
+name = "mac-automation"
+version = "0.1.0"
+description = "A quiet, orderly system for a silicon world"
+requires-python = ">=3.12"
+dependencies = [
+    "ansible>=9.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "ansible-lint",
+]

@@ -1,0 +1,13 @@
+---
+# roles/git_repos/tasks/main.yml
+# Clones and updates git repositories
+
+- name: Clone or update git repositories
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+    clone: true
+    update: true
+    version: "{{ item.version | default('HEAD') }}"
+  loop: "{{ git_repos }}"
+  when: git_repos | length > 0

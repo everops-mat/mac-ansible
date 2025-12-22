@@ -1,0 +1,8 @@
+---
+# roles/directories/defaults/main.yml
+# Default directories to create - override in group_vars or host_vars
+
+directories:
+  - ~/code
+  - ~/work
+  - ~/personal

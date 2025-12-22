@@ -1,0 +1,45 @@
+---
+# playbooks/maintenance.yml
+# Maintenance playbook - updates and upgrades existing packages
+# Usage: ansible-playbook playbooks/maintenance.yml
+
+- name: Maintenance - update and upgrade packages
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Update and upgrade all Homebrew packages
+      community.general.homebrew:
+        update_homebrew: true
+        upgrade_all: true
+      register: brew_upgrade_result
+      tags: [brew, upgrade]
+
+    - name: Show upgraded packages
+      ansible.builtin.debug:
+        msg: "Upgraded {{ brew_upgrade_result.changed_pkgs | default([]) | length }} packages: {{ brew_upgrade_result.changed_pkgs | default([]) | join(', ') }}"
+      when: brew_upgrade_result.changed
+      tags: [brew, upgrade]
+
+    - name: Upgrade all Homebrew casks
+      community.general.homebrew_cask:
+        upgrade_all: true
+        greedy: false
+      register: cask_upgrade_result
+      tags: [cask, upgrade]
+
+    - name: Show upgraded casks
+      ansible.builtin.debug:
+        msg: "Upgraded {{ cask_upgrade_result.changed_pkgs | default([]) | length }} casks: {{ cask_upgrade_result.changed_pkgs | default([]) | join(', ') }}"
+      when: cask_upgrade_result.changed | default(false)
+      tags: [cask, upgrade]
+
+    - name: Update git repositories
+      ansible.builtin.git:
+        repo: "{{ item.repo }}"
+        dest: "{{ item.dest }}"
+        update: true
+        version: "{{ item.version | default('HEAD') }}"
+      loop: "{{ git_repos }}"
+      when: git_repos | length > 0
+      tags: [git, repos]

@@ -1,0 +1,11 @@
+---
+# roles/homebrew/defaults/main.yml
+# Default packages to install - override in group_vars or host_vars
+
+brew_packages:
+  - git
+  - fzf
+  - nvim
+  - stow
+
+cask_packages: []

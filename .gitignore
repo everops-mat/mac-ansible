@@ -1,0 +1,18 @@
+# Secrets
+**/secrets.yml
+.vault_pass
+
+# Editor backups
+*.yml~
+*~
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# uv
+uv.lock

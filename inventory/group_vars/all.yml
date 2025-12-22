@@ -1,0 +1,27 @@
+---
+# inventory/group_vars/all.yml
+# Variables applied to all hosts
+# These override role defaults but can be overridden by host_vars
+
+# Homebrew packages to install
+brew_packages:
+  - git
+  - fzf
+  - nvim
+  - stow
+
+# Homebrew casks (GUI applications)
+cask_packages: []
+
+# Directories to create
+directories:
+  - ~/code
+  - ~/work
+  - ~/personal
+
+# Git repositories to clone
+# Example:
+# git_repos:
+#   - repo: https://github.com/user/dotfiles.git
+#     dest: ~/dotfiles
+git_repos: []

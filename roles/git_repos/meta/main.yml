@@ -1,0 +1,14 @@
+---
+# roles/git_repos/meta/main.yml
+
+galaxy_info:
+  author: Mat Kovach
+  description: Clones and updates git repositories
+  license: MIT
+  min_ansible_version: "2.15"
+  platforms:
+    - name: MacOSX
+      versions:
+        - all
+
+dependencies: []

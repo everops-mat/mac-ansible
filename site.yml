@@ -1,0 +1,18 @@
+---
+# site.yml
+# Main entry point - runs all playbooks
+# Usage: ansible-playbook site.yml
+
+- name: Configure macOS workstation
+  hosts: localhost
+  gather_facts: false
+
+  roles:
+    - role: directories
+      tags: [dirs, setup]
+
+    - role: homebrew
+      tags: [brew, packages, setup]
+
+    - role: git_repos
+      tags: [git, repos, setup]

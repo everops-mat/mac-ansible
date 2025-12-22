@@ -1,0 +1,18 @@
+---
+# playbooks/setup.yml
+# Initial setup playbook - installs packages and configures environment
+# Usage: ansible-playbook playbooks/setup.yml
+
+- name: Initial workstation setup
+  hosts: localhost
+  gather_facts: false
+
+  roles:
+    - role: directories
+      tags: [dirs]
+
+    - role: homebrew
+      tags: [brew, packages]
+
+    - role: git_repos
+      tags: [git, repos]

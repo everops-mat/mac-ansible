@@ -1,0 +1,8 @@
+---
+# roles/homebrew/handlers/main.yml
+# Handlers are triggered by 'notify' in tasks
+# Example: notify: Run brew cleanup
+
+- name: Run brew cleanup
+  ansible.builtin.command: brew cleanup
+  changed_when: true
