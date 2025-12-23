@@ -19,6 +19,7 @@
   community.general.homebrew_cask:
     name: "{{ cask_packages }}"
     state: present
+    sudo_password: "{{ sudo_password | default(omit) }}"
   register: cask_install_result
   when: cask_packages | length > 0
 

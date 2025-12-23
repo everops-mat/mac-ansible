@@ -1,4 +1,4 @@
-.PHONY: run setup maint lint brew git dirs
+.PHONY: run setup maint lint brew git dirs sync
 
 # Default to running everything
 TAGS ?= all
@@ -39,3 +39,6 @@ git:
 
 dirs:
 	$(MAKE) run TAGS=dirs
+
+sync:
+	@uv sync
