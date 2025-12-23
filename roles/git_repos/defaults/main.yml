@@ -9,5 +9,7 @@
 #   - repo: https://github.com/user/project.git
 #     dest: ~/code/project
 #     version: main
+#     name: Your Name        # optional: sets git config --local user.name
+#     email: you@example.com # optional: sets git config --local user.email
 
 git_repos: []

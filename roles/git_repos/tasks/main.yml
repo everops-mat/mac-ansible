@@ -11,3 +11,19 @@
     version: "{{ item.version | default('HEAD') }}"
   loop: "{{ git_repos }}"
   when: git_repos | length > 0
+
+- name: Set local git user.name
+  ansible.builtin.command:
+    cmd: git config --local user.name "{{ item.name }}"
+    chdir: "{{ item.dest }}"
+  loop: "{{ git_repos }}"
+  when: item.name is defined
+  changed_when: false
+
+- name: Set local git user.email
+  ansible.builtin.command:
+    cmd: git config --local user.email "{{ item.email }}"
+    chdir: "{{ item.dest }}"
+  loop: "{{ git_repos }}"
+  when: item.email is defined
+  changed_when: false
