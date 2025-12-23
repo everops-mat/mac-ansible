@@ -9,6 +9,7 @@ brew_packages:
   - fzf
   - nvim
   - stow
+  - claude-code
 
 # Homebrew casks (GUI applications)
 cask_packages: []
@@ -24,4 +25,9 @@ directories:
 # git_repos:
 #   - repo: https://github.com/user/dotfiles.git
 #     dest: ~/dotfiles
-git_repos: []
+git_repos:
+  - repo: eo-github:EverOps/sandlot-jenkins
+    dest: ~/eo/git/EverOps/sandlot-jenkins/main
+    name: "Mat Kovach"
+    version: "trunk"
+    email: "mat.kovach@everops.com"

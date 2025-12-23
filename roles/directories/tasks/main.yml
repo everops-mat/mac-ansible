@@ -4,7 +4,7 @@
 
 - name: Ensure essential directories exist
   ansible.builtin.file:
-    path: "{{ item }}"
+    path: "{{ item.path | default(item) }}"
     state: directory
-    mode: "0755"
+    mode: "{{ item.mode | default('0755') }}"
   loop: "{{ directories }}"

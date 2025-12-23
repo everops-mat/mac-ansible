@@ -1,6 +1,17 @@
 ---
 # roles/directories/defaults/main.yml
 # Default directories to create - override in group_vars or host_vars
+#
+# Each entry can be:
+#   - A simple path string (uses default mode 0755)
+#   - A dict with 'path' (required) and 'mode' (optional, default: 0755)
+#
+# Examples:
+#   directories:
+#     - ~/code                      # simple string, mode defaults to 0755
+#     - path: ~/work                # dict without mode, defaults to 0755
+#     - path: ~/private
+#       mode: "0700"                # dict with custom mode
 
 directories:
   - ~/code
