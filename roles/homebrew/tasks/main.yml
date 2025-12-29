@@ -27,3 +27,24 @@
   ansible.builtin.debug:
     msg: "Installed casks: {{ cask_install_result.changed_pkgs | default([]) }}"
   when: cask_install_result.changed | default(false)
+
+- name: Upgrade all Homebrew packages
+  community.general.homebrew:
+    upgrade_all: true
+  register: brew_upgrade_result
+
+- name: Show upgraded packages
+  ansible.builtin.debug:
+    msg: "Upgraded: {{ brew_upgrade_result.changed_pkgs | default([]) }}"
+  when: brew_upgrade_result.changed | default(false)
+
+- name: Upgrade all Homebrew casks
+  community.general.homebrew_cask:
+    upgrade_all: true
+    sudo_password: "{{ sudo_password | default(omit) }}"
+  register: cask_upgrade_result
+
+- name: Show upgraded casks
+  ansible.builtin.debug:
+    msg: "Upgraded casks: {{ cask_upgrade_result.changed_pkgs | default([]) }}"
+  when: cask_upgrade_result.changed | default(false)
